@@ -13,19 +13,16 @@ while (vid.isOpened()):
     #resize frame
     frame = cv2.resize(frame, (540, 380), fx = 0, fy = 0, interpolation = cv2.INTER_CUBIC)
 
-    # conversion of BGR to grayscale is necessary to apply this operation
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+   # Setting parameter values 
+    t_lower = 50  # Lower Threshold 
+    t_upper = 150  # Upper threshold 
 
-    # adaptive thresholding to use different threshold 
-    # values on different regions of the frame.
-    Thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C,
-                                           cv2.THRESH_BINARY_INV, 11, 2)
- 
-    
+    # Applying the Canny Edge filter 
+    edge = cv2.Canny(frame, t_lower, t_upper)
 
     #display video
     cv2.imshow("Live Video",frame)
-    cv2.imshow('Thresh Video', Thresh)
+    cv2.imshow('Canny', edge)
     
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
