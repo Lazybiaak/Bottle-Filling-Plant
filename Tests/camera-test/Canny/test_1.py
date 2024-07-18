@@ -1,5 +1,5 @@
 import cv2
-
+print(cv2.__version__)
 # Path to .jpg file
 image_path = 'Tests/camera-test/Canny/images/1.jpg'
 
