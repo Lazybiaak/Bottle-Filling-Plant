@@ -1,7 +1,7 @@
 import cv2
 print(cv2.__version__)
 # Path to .jpg file
-image_path = 'Tests/camera-test/Canny/images/1.jpg'
+image_path = '/home/user/Desktop/project/Bottle-Filling-Plant/Tests/camera-test/Canny/images/1.jpg'
 
 # Attempt to read the image file
 frame = cv2.imread(image_path)
