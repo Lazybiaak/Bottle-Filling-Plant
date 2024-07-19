@@ -3,10 +3,10 @@ import cv2
 import numpy as np
 import math
 
-image_height=700
-image_width=400
+# image_height=700
+# image_width=700
 # Video capture from camera
-image_path = 'images/4.jpg'
+image_path = 'images/1.jpg'
 # vid = cv2.VideoCapture(0)
 
 # loop
@@ -15,7 +15,9 @@ while (1):
     # Capture frame
     # ret, frame = vid.read()
     frame = cv2.imread(image_path)
-    
+    image_height, image_width, _ = frame.shape
+    image_width=int((image_width*700)/image_height)
+    image_height=720
     # Resize frame
     frame = cv2.resize(frame, (image_width, image_height), fx=0, fy=0, interpolation=cv2.INTER_CUBIC)
 
