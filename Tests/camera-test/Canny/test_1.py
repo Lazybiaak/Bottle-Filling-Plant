@@ -1,7 +1,6 @@
 import cv2
-print(cv2.__version__)
 # Path to .jpg file
-image_path = '/home/user/Desktop/project/Bottle-Filling-Plant/Tests/camera-test/Canny/images/1.jpg'
+image_path = 'images/1.jpg'
 
 # Attempt to read the image file
 frame = cv2.imread(image_path)
@@ -11,7 +10,7 @@ if frame is None:
     print(f"Error: Could not open or read the image at {image_path}")
 else:
     # Resize the frame
-    #frame = cv2.resize(frame, (540, 380), interpolation=cv2.INTER_CUBIC)
+    frame = cv2.resize(frame, (540, 380), interpolation=cv2.INTER_CUBIC)
     
     # Applying the Canny Edge filter (assuming you have defined t_lower and t_upper)
     t_lower = 100  # Example threshold values
