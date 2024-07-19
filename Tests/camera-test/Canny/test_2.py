@@ -6,7 +6,7 @@ import math
 image_height=700
 image_width=400
 # Video capture from camera
-image_path = 'images/3.jpg'
+image_path = 'images/4.jpg'
 # vid = cv2.VideoCapture(0)
 
 # loop
