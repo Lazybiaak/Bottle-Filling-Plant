@@ -2,7 +2,6 @@
 import cv2
 import numpy as np
 import math
-from PIL import Image
 image_height=700
 image_width=700
 lower_red1 = np.array([0, 100, 100])
