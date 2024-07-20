@@ -6,7 +6,7 @@ image_height=700
 image_width=700
 # Video capture from camera
 # image_path = 'images/8.jpg'
-vid = cv2.VideoCapture(2)
+vid = cv2.VideoCapture(0)
 # loop
 while (1):
     # Capture frame
