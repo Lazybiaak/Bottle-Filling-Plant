@@ -2,21 +2,28 @@
 import cv2
 import numpy as np
 import math
+from PIL import Image
 image_height=700
 image_width=700
+lower_red1 = np.array([0, 100, 100])
+upper_red1 = np.array([10, 255, 255])
+lower_red2 = np.array([160, 100, 100])
+upper_red2 = np.array([180, 255, 255])
 # Video capture from camera
-image_path = 'images/1.jpg'
+image_path = '1.jpg'
 # vid = cv2.VideoCapture(2)
 # loop
 while (1):
     # Capture frame
     # ret, frame = vid.read()
-    frame = cv2.imread(image_path)
-    image_height, image_width, _ = frame.shape
+    frame = Image.open(image_path)
+    frame = frame.convert('RGB')
+    image_width, image_height = frame.size
     image_width=int((image_width*700)/image_height)
     image_height=720
     # Resize frame
-    frame = cv2.resize(frame, (image_width, image_height), fx=0, fy=0, interpolation=cv2.INTER_CUBIC)
+    # frame = cv2.resize(frame, (image_width, image_height), fx=0, fy=0, interpolation=cv2.INTER_CUBIC)
+    # hsv=cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     # Setting parameter values 
     t_lower = 50  # Lower Threshold 
     t_upper = 100  # Upper threshold 
@@ -32,17 +39,18 @@ while (1):
     cv2.circle(edge, (x_center,y_center ), 2, (0, 255, 0), 4)
     first_white_pixel_above = None
     for y in range(y_center, 0, -1):
-        if edge0[y, x_center] == 255:  # White pixel in the edge-detected image
+        r, g, b = frame.getpixel((x,y))
+        if r>=200:
             first_white_pixel_above = (x_center, y)
             cv2.line(edge, (0,y), (image_width, y), (0, 0, 255), 1)
-            cv2.line(frame, (0,y), (image_width, y), (0, 0, 255), 1)
+            cv2.line(frame, (0,y), (image_width, y), (0, 0, 0), 1)
             break
     first_white_pixel_below = None
     for y in range(y_center, image_height):
         if edge0[y, x_center] == 255:  # White pixel in the edge-detected image
             first_white_pixel_below = (x_center, y)
             cv2.line(edge, (0,y), (image_width, y), (0, 0, 255), 1)
-            cv2.line(frame, (0,y), (image_width, y), (0, 0, 255), 1)
+            cv2.line(frame, (0,y), (image_width, y), (0, 0, 0), 1)
             break
     # Calculate distance between first white pixel above and first white pixel below
     if first_white_pixel_above and first_white_pixel_below:

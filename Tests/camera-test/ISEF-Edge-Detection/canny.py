@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 #videocapture from camera
-image_path = 'Tests/camera-test/Canny/images/1.jpg'
+image_path = '1.jpg'
 #vid = cv2.VideoCapture(0)
 
 #loop
