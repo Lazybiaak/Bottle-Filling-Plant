@@ -2,8 +2,8 @@
 import cv2
 import numpy as np
 import math
-# image_height=700
-# image_width=700
+image_height=700
+image_width=700
 # Video capture from camera
 # image_path = 'images/8.jpg'
 vid = cv2.VideoCapture(2)
@@ -19,12 +19,12 @@ while (1):
     frame = cv2.resize(frame, (image_width, image_height), fx=0, fy=0, interpolation=cv2.INTER_CUBIC)
     # Setting parameter values 
     t_lower = 50  # Lower Threshold 
-    t_upper = 80  # Upper threshold 
+    t_upper = 100  # Upper threshold 
     # Applying the Canny Edge filter 
     edge0= cv2.Canny(frame, t_lower, t_upper)
     edge= cv2.cvtColor(edge0, cv2.COLOR_GRAY2BGR)
     x_center=int(0.50*image_width)
-    y_center=int(0.225*image_height)
+    y_center=int(0.3*image_height)
     # Draw the line on the original frame
     cv2.line(edge, (0, y_center), (image_width, y_center), (0, 255, 0), 1)
     cv2.line(edge, (x_center,0), (x_center, image_height), (0, 255, 0), 1)
