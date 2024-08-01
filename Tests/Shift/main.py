@@ -18,7 +18,6 @@ def third_sixth(shared_station):
     dist=filled.distance()
     if dist <= 10:
         shared_station[2] = 'I'
-    else if dist
 
 def fourth_sixth(shared_station):
     shared_station[3] = 'C'
